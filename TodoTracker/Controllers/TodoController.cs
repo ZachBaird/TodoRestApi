@@ -1,9 +1,7 @@
 ﻿using Microsoft.AspNetCore.Mvc;
-using System;
 using System.Collections.Generic;
-using System.Linq;
-using System.Threading.Tasks;
 using TodoTracker.Models;
+using TodoTracker.Services;
 
 namespace TodoTracker.Controllers
 {
@@ -11,24 +9,34 @@ namespace TodoTracker.Controllers
     [Route("[controller]", Name = "todo")]
     public class TodoController : ControllerBase
     {
-        List<Todo> _todos = new List<Todo>()
+        private readonly TodoService _todoService;
+
+        public TodoController(TodoService todoService)
         {
-            new Todo { Id = 1, Name = "Complete Todo app", Status = Status.Dev, DateCreated = DateTime.Now, DateFinished = null },
-            new Todo { Id = 2, Name = "Complete Pet Profile app", Status = Status.Backlog, DateCreated = DateTime.Now, DateFinished = null }
-        };
+            _todoService = todoService;
+        }
 
         [HttpGet]
-        public IEnumerable<Todo> Get()
+        public ActionResult<List<Todo>> Get() =>
+            _todoService.Get();
+
+        [HttpGet("{id:length(24)}", Name = "GetTodo")]
+        public ActionResult<Todo> Get(string id)
         {
-            return _todos.ToArray(); 
+            var todo = _todoService.Get(id);
+
+            if (todo == null)
+                return NotFound();
+
+            return todo;
         }
 
         [HttpPost]
-        public IEnumerable<Todo> Post(Todo newTodo)
+        public ActionResult<Todo> Create(Todo todo)
         {
-            _todos.Add(newTodo);
+            _todoService.Create(todo);
 
-            return _todos.ToArray();
-        }           
+            return CreatedAtRoute("GetTodo", new { id = todo.Id.ToString() }, todo);
+        }
     }
 }

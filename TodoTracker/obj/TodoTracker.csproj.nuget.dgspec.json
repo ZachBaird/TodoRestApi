@@ -1,23 +1,23 @@
 {
   "format": 1,
   "restore": {
-    "C:\\Dev\\_Repositories\\TodoTracker\\TodoTracker\\TodoTracker.csproj": {}
+    "C:\\Dev\\FullStack\\OreoTodo\\TodoRestApi\\TodoTracker\\TodoTracker.csproj": {}
   },
   "projects": {
-    "C:\\Dev\\_Repositories\\TodoTracker\\TodoTracker\\TodoTracker.csproj": {
+    "C:\\Dev\\FullStack\\OreoTodo\\TodoRestApi\\TodoTracker\\TodoTracker.csproj": {
       "version": "1.0.0",
       "restore": {
-        "projectUniqueName": "C:\\Dev\\_Repositories\\TodoTracker\\TodoTracker\\TodoTracker.csproj",
+        "projectUniqueName": "C:\\Dev\\FullStack\\OreoTodo\\TodoRestApi\\TodoTracker\\TodoTracker.csproj",
         "projectName": "TodoTracker",
-        "projectPath": "C:\\Dev\\_Repositories\\TodoTracker\\TodoTracker\\TodoTracker.csproj",
-        "packagesPath": "C:\\Users\\bairdz\\.nuget\\packages\\",
-        "outputPath": "C:\\Dev\\_Repositories\\TodoTracker\\TodoTracker\\obj\\",
+        "projectPath": "C:\\Dev\\FullStack\\OreoTodo\\TodoRestApi\\TodoTracker\\TodoTracker.csproj",
+        "packagesPath": "C:\\Users\\zdb19\\.nuget\\packages\\",
+        "outputPath": "C:\\Dev\\FullStack\\OreoTodo\\TodoRestApi\\TodoTracker\\obj\\",
         "projectStyle": "PackageReference",
         "fallbackFolders": [
           "C:\\Program Files\\dotnet\\sdk\\NuGetFallbackFolder"
         ],
         "configFilePaths": [
-          "C:\\Users\\bairdz\\AppData\\Roaming\\NuGet\\NuGet.Config",
+          "C:\\Users\\zdb19\\AppData\\Roaming\\NuGet\\NuGet.Config",
           "C:\\Program Files (x86)\\NuGet\\Config\\Microsoft.VisualStudio.Offline.config"
         ],
         "originalTargetFrameworks": [
@@ -25,9 +25,7 @@
         ],
         "sources": {
           "C:\\Program Files (x86)\\Microsoft SDKs\\NuGetPackages\\": {},
-          "https://api.nuget.org/v3/index.json": {},
-          "https://dpastfs.corp.leidos.com/DPAS%20Collection/_packaging/DPASAlphaFeed/nuget/v3/index.json": {},
-          "https://dpastfs.corp.leidos.com/DPAS%20Collection/_packaging/DpasFeed/nuget/v3/index.json": {}
+          "https://api.nuget.org/v3/index.json": {}
         },
         "frameworks": {
           "netcoreapp3.1": {
@@ -42,6 +40,12 @@
       },
       "frameworks": {
         "netcoreapp3.1": {
+          "dependencies": {
+            "MongoDB.Driver": {
+              "target": "Package",
+              "version": "[2.10.2, )"
+            }
+          },
           "imports": [
             "net461",
             "net462",
@@ -60,7 +64,7 @@
               "privateAssets": "all"
             }
           },
-          "runtimeIdentifierGraphPath": "C:\\Program Files\\dotnet\\sdk\\3.1.100\\RuntimeIdentifierGraph.json"
+          "runtimeIdentifierGraphPath": "C:\\Program Files\\dotnet\\sdk\\3.1.101\\RuntimeIdentifierGraph.json"
         }
       }
     }

@@ -10,6 +10,9 @@ using Microsoft.Extensions.Configuration;
 using Microsoft.Extensions.DependencyInjection;
 using Microsoft.Extensions.Hosting;
 using Microsoft.Extensions.Logging;
+using Microsoft.Extensions.Options;
+using TodoTracker.Models;
+using TodoTracker.Services;
 
 namespace TodoTracker
 {
@@ -27,8 +30,15 @@ namespace TodoTracker
         // This method gets called by the runtime. Use this method to add services to the container.
         public void ConfigureServices(IServiceCollection services)
         {
-            services.AddControllers();
+            services.Configure<TodoDatabaseSettings>(
+                Configuration.GetSection(nameof(TodoDatabaseSettings)));
 
+            services.AddSingleton<ITodoDatabaseSettings>(sp =>
+                sp.GetRequiredService<IOptions<TodoDatabaseSettings>>().Value);
+
+            services.AddSingleton<TodoService>();
+
+            services.AddControllers();
             services.AddCors(options =>
             {
                 options.AddPolicy(MyAllowSpecificOrigins,
