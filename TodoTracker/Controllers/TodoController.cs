@@ -1,4 +1,5 @@
 ﻿using Microsoft.AspNetCore.Mvc;
+using System;
 using System.Collections.Generic;
 using TodoTracker.Models;
 using TodoTracker.Services;
@@ -34,7 +35,10 @@ namespace TodoTracker.Controllers
         [HttpPost]
         public ActionResult<Todo> Create(Todo todo)
         {
-            _todoService.Create(todo);
+            if (todo.DateCreated == null)
+                todo.DateCreated = DateTime.Now;
+
+            _todoService.Create(todo);            
 
             return CreatedAtRoute("GetTodo", new { id = todo.Id.ToString() }, todo);
         }
