@@ -43,16 +43,15 @@ namespace TodoTracker.Controllers
             return CreatedAtRoute("GetTodo", new { id = todo.Id.ToString() }, todo);
         }
 
-        [HttpDelete]
-        public ActionResult<Todo> Delete(string id)
+        [HttpDelete("{id:length(24)}")]
+        public IActionResult Delete(string id)
         {
-            if (id == null)
-                return BadRequest();
+            var todo = _todoService.Get(id);
 
-            if (_todoService.Get(id) == null)
+            if (todo == null)
                 return NotFound();
 
-            _todoService.Remove(id);
+            _todoService.Remove(todo.Id);
 
             return NoContent();
         }
