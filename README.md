@@ -12,9 +12,8 @@ Below is prerequisite technology you want to be familiar with and have in your d
 ## Upcoming
 Below are upcoming changes to this repository:
 
-* Add a data connection to an Atlas MongoDB service to start persisting data
-* Finish scaffolding Todo endpoint
 * Implement user authentication with JWT
+* Remove test Weather Service
 
 ## Demo
-A demo of the app is not live yet.
+The REST API can be found at https://oreotodo.azurewebsites.net
